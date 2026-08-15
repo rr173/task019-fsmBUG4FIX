@@ -107,7 +107,7 @@ func (d *Definition) Terminals() []string {
 // 调用前应已 Validate。
 func (d *Definition) Apply(state, event string) (next string, ok bool, reason string) {
 	if !d.HasState(state) {
-		return "", false, fmt.Sprintf("未知状态 %q", state)
+		return state, false, fmt.Sprintf("未知状态 %q", state)
 	}
 	if d.IsTerminal(state) {
 		return state, false, fmt.Sprintf("终态 %q 不响应任何事件", state)
